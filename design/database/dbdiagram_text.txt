@@ -1,0 +1,60 @@
+Table File {
+  file_id integer [primary key]
+  file_name varchar
+  file_path varchar
+  file_size integer
+  file_hash varchar
+  algorithm_id integer
+}
+
+Table Key {
+  key_id integer [primary key]
+  key_name varchar
+  key_value varchar
+  key_type varchar
+
+}
+
+Table Algorithm {
+  algorithm_id integer [primary key]
+  algorithm_name varchar
+  algorithm_type varchar [note: 'symetric/asymmetric']
+}
+
+Table PerformanceMetrics {
+  performance_id integer [primary key]
+  timestamp integer
+  time integer
+  type varchar [note: 'encryption/decryption']
+  file_id integer
+  algorithm_id integer
+  framework_id integer
+}
+
+Table Framework {
+  framework_id integer [primary key]
+  framework_name varchar
+}
+
+Table KeyPairs {
+  pair_id integer [primary key]
+  first_key_id varchar
+  second_key_id varchar
+  algorithm_id integer
+}
+
+
+
+Ref: "PerformanceMetrics"."algorithm_id" < "Algorithm"."algorithm_id"
+
+Ref: "PerformanceMetrics"."framework_id" < "Framework"."framework_id"
+
+Ref: "PerformanceMetrics"."file_id" < "File"."file_id"
+
+Ref: "File"."algorithm_id" - "Algorithm"."algorithm_id"
+
+Ref: "KeyPairs"."algorithm_id" < "Algorithm"."algorithm_id"
+
+Ref: "KeyPairs"."first_key_id" < "Key"."key_id"
+
+Ref: "KeyPairs"."second_key_id" < "Key"."key_id"

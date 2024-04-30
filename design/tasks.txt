@@ -1,0 +1,27 @@
+opensll
+libressl
+gnutls
+
+rsa
+aes
+
+generate_key
+performance
+
+ui/ux
+- home
+- perf
+- about
+
+
+radu		openssl + performance	
+mihnea		libressl + sqlite starter + modele
+robert		gnutls + keygen
+florin		ui + legat ui de app
+
+
+radu 1
+mihnea 2
+robert 3
+
+openssl 
